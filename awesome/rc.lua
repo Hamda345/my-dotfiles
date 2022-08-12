@@ -48,7 +48,7 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
+terminal = "kitty"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -120,7 +120,8 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    --awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+     awful.tag({ "1", "2", "3", "4", "5", "6" }, s, awful.layout.layouts[1])
 
 end)
 -- }}}
@@ -216,10 +217,23 @@ globalkeys = gears.table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
-	--brave
+	--web-browser
 	 awful.key({ modkey },            "b",     function () 
-	awful.util.spawn("brave") end,
-              {description = "run brave", group = "browser"}),
+	awful.util.spawn("firefox") end,
+              {description = "run web browser", group = "browser"}),
+	
+
+    --bye
+	 awful.key({ modkey },            "x",     function () 
+	awful.util.spawn("rofi -show p -modi p:rofi-power-menu -theme photon-violet") end,
+              {description = "run bye", group = "launcher"}),
+    
+
+    --lock-screen
+	 awful.key({ modkey, "Shift"    },            "s",     function () 
+	awful.util.spawn("betterlockscreen -l blur") end,
+              {description = "run bye", group = "launcher"}),
+
 
 
     -- rofi
@@ -394,8 +408,8 @@ awful.rules.rules = {
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+ --    { rule = { class = "brave" },
+   --    properties = { screen = 1, tag = "2" } },
 -- }}}
 
 -- {{{ Signals
@@ -428,18 +442,19 @@ autorun = true
 autorunApps =
 {
 	"/home/hamda/.config/polybar/launch.sh --cuts",
+	"nitrogen --restore",
+	"xfce4-power-manager",
+    "picom",
 	"nm-applet",
-   "picom",
    "fehbg"
 }
 --Gaps
-beautiful.useless_gap = 5
+beautiful.useless_gap = 3
 
 if autorun then
    for app = 1, #autorunApps do
        awful.util.spawn(autorunApps[app])
    end
 end
-
 
 
