@@ -446,7 +446,6 @@ autorunApps =
 	"xfce4-power-manager",
     "picom",
 	"nm-applet",
-   "fehbg"
 }
 --Gaps
 beautiful.useless_gap = 3
