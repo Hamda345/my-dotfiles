@@ -1,43 +1,55 @@
-# rxyhn's aesthetic alacritty
-# configuration for alacritty, the GPU enhanced terminal emulator.
 import:
-  - .config/alacritty/themes/night.yml
+  - ~/.config/alacritty/font.yml
+  - ~/.config/alacritty/color.yml
 
 env:
   TERM: xterm-256color
 
 window:
-  opacity: 0.8
-  dynamic_padding: true
+  decorations: none
+  dimentions:
+    columns: 0
+    lines: 0
 
-  padding:
-    x: 25
-    y: 25
-
-font:
-  normal:
-    family: Iosevka Nerd Font Mono
-    style: Regular
-
-  bold:
-    family: Iosevka Nerd Font Mono
-    style: Bold
-
-  italic:
-    family: Iosevka Nerd Font Mono
-    style: Italic
-
-  bold_italic:
-    family: Iosevka Nerd Font Mono
-    style: Bold Italic
-
-  size: 10
-
-  offset:
+  position:
     x: 0
     y: 0
 
-cursor:
-  style: Underline
+  padding:
+    x: 6
+    y: 6
 
-live_config_reload: true
+  opacity: 0.7
+
+  title: Alacritty
+
+  class:
+    instance: Alacritty
+    general: Alacritty
+
+
+scrolling:
+  history: 5000
+
+cursor:
+  style: 
+    shape: Underline
+    blinking: On
+
+key_bindings:
+    # (Windows, Linux, and BSD only)
+  - { key: V,        mods: Control|Shift, action: Paste            }
+  - { key: C,        mods: Control|Shift, action: Copy             }
+  - { key: Insert,   mods: Shift,         action: PasteSelection   }
+  - { key: Key0,     mods: Control,       action: ResetFontSize    }
+  - { key: Equals,   mods: Control,       action: IncreaseFontSize }
+  - { key: Minus,    mods: Control,       action: DecreaseFontSize }
+
+  - { key: L,         mods: Control, action: ClearLogNotice                   }
+  - { key: L,         mods: Control, chars: "\x0c"                            }
+  - { key: PageUp,    mods: Shift,   action: ScrollPageUp,   mode: ~Alt       }
+  - { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
+  - { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
+  - { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
+
+

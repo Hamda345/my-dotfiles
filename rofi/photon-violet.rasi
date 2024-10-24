@@ -6,10 +6,10 @@
  ********************************************************/
 
 * {
-    bg:           #030315;
+    bg:           #000000;
     bg-border:    #f3f3f3;
-    fg:           #5a5a5a;
-    accent-bg:    #9e77e2;
+    fg:           #eeeeee;
+    accent-bg:    #01161b;
     accent-fg:    #ffffff;
 
     spacing:          10;
@@ -19,11 +19,11 @@
 
 window {
     width:            40%;
-    border:           2;
+    border:           1;
     padding:          12;
     background-color: @bg;
     border-color:     @bg-border;
-    border-radius: 9px;
+    border-radius: 5px;
 }
 
 inputbar {
